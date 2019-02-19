@@ -1,0 +1,1 @@
+# hive_datawarehouse_mode_practice
