@@ -25,12 +25,13 @@ SELECT HashBytes('MD5',customerid) hub_customer_key ,
 FROM [dbo].[Customers] 
 
 -- hub_employee
-SELECT HashBytes('MD5',[EmployeeID]+[LastName]) hub_employee_key
+SELECT HashBytes('MD5',CONVERT(nvarchar,[EmployeeID]) + [LastName]) hub_employee_key
       ,[EmployeeID]
       ,[LastName]
 	  ,CURRENT_TIMESTAMP hub_load_dts 
 	  ,'northwind;Employees' hub_rec_src 	
 FROM [dbo].[Employees]
+
 -- sat_employee 
 SELECT HashBytes('MD5',CONVERT(nvarchar,[EmployeeID]) + [LastName] ) hub_employee_key 
       ,[EmployeeID]
@@ -83,9 +84,9 @@ SELECT HashBytes('MD5',CONVERT(nvarchar,[OrderID]) ) hub_order_key
       ,[ShipRegion]
       ,[ShipPostalCode]
       ,[ShipCountry]
-	  , HASHBYTES('MD5',[CustomerID]+CONVERT(nvarchar,[EmployeeID])+CONVERT(nvarchar,[OrderDate])+CONVERT(nvarchar,[RequiredDate]) + CONVERT(nvarchar,[ShippedDate]) 
-	                  + CONVERT(nvarchar,[ShipVia]) + CONVERT(nvarchar,[Freight])  + ISNULL([ShipName],'') + ISNULL([ShipAddress],'') 
-					  + ISNULL([ShipCity],'') + ISNULL([ShipRegion],'') +  ISNULL([ShipPostalCode],'') + ISNULL([ShipCountry],'')  ) hash_diff
+	  , HASHBYTES('MD5',[CustomerID]+CONVERT(nvarchar,[EmployeeID])+CONVERT(nvarchar,[OrderDate])+CONVERT(nvarchar,[RequiredDate]) 
+			+ CONVERT(nvarchar,[ShippedDate])+ CONVERT(nvarchar,[ShipVia]) + CONVERT(nvarchar,[Freight])  + ISNULL([ShipName],'')
+			+ ISNULL([ShipAddress],'') + ISNULL([ShipCity],'') + ISNULL([ShipRegion],'') +  ISNULL([ShipPostalCode],'') + ISNULL([ShipCountry],'')  \) hash_diff
 	  , CURRENT_TIMESTAMP sat_load_dts 
 	  , 'northwind;Orders' sat_rec_src 	
   FROM [dbo].[Orders]

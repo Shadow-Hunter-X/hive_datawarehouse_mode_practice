@@ -7,7 +7,8 @@ CREATE TABLE [link_order_customer](
 	[hub_customer_key] varchar(36) NOT NULL , 
 	[CustomerID] [nchar](5) NOT NULL ,
 	[hub_order_key] varchar(36) NOT NULL , 
-	[orderid] [int] IDENTITY(1,1) NOT NULL ,
+	[orderid] [int] NOT NULL ,
+	[ProductID] [int] NOT NULL , 
 	[link_load_dts] [datetime] NOT NULL ,
 	[link_rec_src] varchar(30) NULL
  CONSTRAINT [PK_order_customer] PRIMARY KEY CLUSTERED 
@@ -17,3 +18,4 @@ CREATE TABLE [link_order_customer](
 ) ON [PRIMARY] ;
 
 GO
+

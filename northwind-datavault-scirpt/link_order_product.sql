@@ -8,6 +8,7 @@ CREATE TABLE [link_order_product](
 	[ProductName] [nvarchar](40) NOT NULL,
 	[hub_order_key] varchar(36) NOT NULL , 
 	[orderid] [int] NOT NULL ,
+	[ProductID] [int] NOT NULL , 
 	[link_load_dts] [datetime] NOT NULL,
 	[link_rec_src] varchar(30) NULL 
  CONSTRAINT [PK_order_employee] PRIMARY KEY CLUSTERED 
@@ -17,3 +18,4 @@ CREATE TABLE [link_order_product](
 ) ON [PRIMARY] ;
 
 GO
+

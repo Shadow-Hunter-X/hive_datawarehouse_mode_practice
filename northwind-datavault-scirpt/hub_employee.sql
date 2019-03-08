@@ -42,7 +42,7 @@ IF OBJECT_ID('hub_employee', 'U') IS NULL
 CREATE TABLE [hub_employee](
 	[hub_employee_key] varchar(36) NOT NULL ,
 	[EmployeeID] [int] NOT NULL,
-	[last_name] [nvarchar](10) NOT NULL,
+	[lastname] [nvarchar](10) NOT NULL,
 	[hub_load_dts] [datetime] NOT NULL ,
 	[hub_rec_src] varchar(30) NOT NULL 
  CONSTRAINT [PK_Hub_Employees] PRIMARY KEY CLUSTERED 

@@ -5,7 +5,11 @@ IF OBJECT_ID('sat_order', 'U') IS NOT NULL
 IF OBJECT_ID('sat_order', 'U') IS NULL
 CREATE TABLE [sat_order](
     [hub_order_key] varchar(36) , 
-	[OrderID] [int] IDENTITY(1,1) NOT NULL,
+	[OrderID] [int] NOT NULL ,
+    [ProductID] [int] NOT NULL , 
+	[UnitPrice] [money] NOT NULL,
+	[Quantity] [smallint] NOT NULL,
+	[Discount] [real] NOT NULL,
 	[CustomerID] [nchar](5) NULL,
 	[EmployeeID] [int] NULL,
 	[OrderDate] [datetime] NULL,
@@ -29,7 +33,7 @@ CREATE TABLE [sat_order](
 ) ON [PRIMARY] ;
 
 -------------------------------------------------------------------------
--- SELECT HashBytes('MD5','123456')  MD5º∆À„
+
 -- hub_order 
 IF OBJECT_ID('hub_order', 'U') IS NOT NULL 
   DROP TABLE hub_order; 
@@ -38,10 +42,11 @@ IF OBJECT_ID('hub_order', 'U') IS NULL
 CREATE TABLE [hub_order](
     [hub_order_key] varchar(36) NOT NULL , 
 	[orderid] [int] NOT NULL ,
+	[ProductID] [int] NOT NULL , 
 	[hub_load_dts] [datetime] NOT NULL ,
 	[hub_rec_src] varchar(30) NOT NULL 
  CONSTRAINT [PK_hub_Orders] PRIMARY KEY CLUSTERED 
 (
-	[hub_order_key] ASC
+	[hub_order_key] , [ProductID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] ; 

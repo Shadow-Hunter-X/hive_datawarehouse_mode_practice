@@ -24,6 +24,7 @@ CREATE TABLE [sat_product](
 ) ON [PRIMARY] ;
 
 -------- hub_product
+
 IF OBJECT_ID('hub_product', 'U') IS NOT NULL 
   DROP TABLE hub_product; 
 

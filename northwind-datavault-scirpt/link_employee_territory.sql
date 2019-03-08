@@ -18,3 +18,4 @@ CREATE TABLE [link_employee_territory](
 ) ON [PRIMARY] ;
 
 GO
+

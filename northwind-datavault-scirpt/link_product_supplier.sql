@@ -17,3 +17,9 @@ CREATE TABLE [link_product_supplier](
 ) ON [PRIMARY] ;
 
 GO
+
+
+SELECT * 
+FROM 
+Suppliers LEFT JOIN Products
+ON Suppliers.SupplierID = Products.SupplierID

@@ -18,7 +18,7 @@ CREATE TABLE [sat_shipper](
 
 GO
 
-------------
+---------------
 
 IF OBJECT_ID('hub_shipper', 'U') IS NOT NULL 
   DROP TABLE hub_shipper; 
