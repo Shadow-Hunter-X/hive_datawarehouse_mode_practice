@@ -1,0 +1,927 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2019 9:13:55 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="NEO"
+  DTS:CreatorName="NEO\JSKJ"
+  DTS:DTSID="{92875FFE-E3A2-4CAA-B866-788922019AD0}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="sat_hub_region"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{DC40C303-DE66-4E0B-89F5-5D9C3082E0F4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\hub_region"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{3B93BFFC-8989-46E6-87EB-3D596E53F826}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="hub_region"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\hub_region\dst_hub_region"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_hub_region"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."hub_region"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\hub_region\dst_hub_region.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].Columns[hub_region_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_region_key"
+                      externalMetadataColumnId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_region_key]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_region_key]" />
+                    <inputColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].Columns[RegionID]"
+                      cachedDataType="i4"
+                      cachedName="RegionID"
+                      externalMetadataColumnId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionID]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[RegionID]" />
+                    <inputColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].Columns[RegionDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RegionDescription"
+                      externalMetadataColumnId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionDescription]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[RegionDescription]" />
+                    <inputColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].Columns[hub_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hub_load_dts"
+                      externalMetadataColumnId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_load_dts]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_load_dts]" />
+                    <inputColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].Columns[hub_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="hub_rec_src"
+                      externalMetadataColumnId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_rec_src]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_region_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_region_key" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="hub_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="hub_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\hub_region\dst_hub_region.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub_region\dst_hub_region.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\hub_region\dst_hub_region.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\hub_region\dst_hub_region.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\hub_region\dst_hub_region.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\hub_region\hub_region"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="hub_region"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',CONVERT(nvarchar,[RegionID])+ [RegionDescription]) hub_region_key
+      , [RegionID]
+      , [RegionDescription]
+	  , CURRENT_TIMESTAMP hub_load_dts 
+	  ,'northwind;Region' hub_rec_src 	
+  FROM [dbo].[Region]</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\hub_region\hub_region.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_region_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[hub_region_key]"
+                      length="8000"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_region_key]"
+                      name="hub_region_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[RegionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[RegionID]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[RegionID]"
+                      name="RegionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[RegionDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[RegionDescription]"
+                      length="50"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[RegionDescription]"
+                      name="RegionDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[hub_load_dts]"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_load_dts]"
+                      name="hub_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[hub_rec_src]"
+                      length="16"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].Columns[hub_rec_src]"
+                      name="hub_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[hub_region_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_region_key" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="hub_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源输出].ExternalColumns[hub_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      name="hub_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[hub_region_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[hub_region_key]"
+                      name="hub_region_key" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[RegionID]"
+                      dataType="i4"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[RegionID]"
+                      name="RegionID" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[RegionDescription]"
+                      name="RegionDescription" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[hub_load_dts]"
+                      name="hub_load_dts" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[hub_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[hub_rec_src]"
+                      name="hub_rec_src" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\hub_region\hub_region.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\hub_region.Paths[ADO NET 源输出]"
+              endId="Package\hub_region\dst_hub_region.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\hub_region\hub_region.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sat_region"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{26C7E2A6-DBC5-493C-A703-C2BDB7715933}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sat_region"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\sat_region\dst_sat_region"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_sat_region"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."sat_region"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\sat_region\dst_sat_region.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].Columns[hub_region_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_region_key"
+                      externalMetadataColumnId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_region_key]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[hub_region_key]" />
+                    <inputColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].Columns[RegionID]"
+                      cachedDataType="i4"
+                      cachedName="RegionID"
+                      externalMetadataColumnId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionID]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[RegionID]" />
+                    <inputColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].Columns[RegionDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RegionDescription"
+                      externalMetadataColumnId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionDescription]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[RegionDescription]" />
+                    <inputColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].Columns[hash_diff]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hash_diff"
+                      externalMetadataColumnId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[hash_diff]" />
+                    <inputColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].Columns[sat_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="sat_load_dts"
+                      externalMetadataColumnId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[sat_load_dts]" />
+                    <inputColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].Columns[sat_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="sat_rec_src"
+                      externalMetadataColumnId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[sat_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[hub_region_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_region_key" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="50"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\sat_region\dst_sat_region.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat_region\dst_sat_region.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\sat_region\dst_sat_region.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\sat_region\dst_sat_region.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\sat_region\dst_sat_region.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\sat_region\sat_region"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="sat_region"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',CONVERT(nvarchar,[RegionID])+ [RegionDescription]) hub_region_key
+      ,[RegionID]
+      ,[RegionDescription]
+	  , HASHBYTES('MD5',CONVERT(nvarchar,[RegionID]) + ISNULL([RegionDescription],'') ) hash_diff
+	  , CURRENT_TIMESTAMP sat_load_dts 
+	  , 'northwind;Region' sat_rec_src 	
+  FROM [dbo].[Region]</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\sat_region\sat_region.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[hub_region_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[hub_region_key]"
+                      length="8000"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[hub_region_key]"
+                      name="hub_region_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[RegionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[RegionID]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[RegionID]"
+                      name="RegionID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[RegionDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[RegionDescription]"
+                      length="50"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[RegionDescription]"
+                      name="RegionDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      length="8000"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      name="hash_diff"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      name="sat_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      length="16"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      name="sat_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[hub_region_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_region_key" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[RegionID]"
+                      dataType="i4"
+                      name="RegionID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      name="RegionDescription" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[hub_region_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[hub_region_key]"
+                      name="hub_region_key" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[RegionID]"
+                      dataType="i4"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[RegionID]"
+                      name="RegionID" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[RegionDescription]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[RegionDescription]"
+                      name="RegionDescription" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      name="hash_diff" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      name="sat_load_dts" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      name="sat_rec_src" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\sat_region\sat_region.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\sat_region.Paths[ADO NET 源输出]"
+              endId="Package\sat_region\dst_sat_region.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\sat_region\sat_region.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[约束]"
+      DTS:CreationName=""
+      DTS:DTSID="{67528D94-7A63-4550-B401-47D826D08861}"
+      DTS:From="Package\hub_region"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="约束"
+      DTS:To="Package\sat_region"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="sql11">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\hub_region"
+          TopLeft="93.9999962250393,15.714284860358" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\sat_region"
+          TopLeft="92.3333296246001,118.785708165899" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[约束]"
+          TopLeft="163.16666292482,57.714284860358">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.071423305541"
+              Start="0,0"
+              End="0,53.571423305541">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.571423305541" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.873046875,21.9273132152705,19.74609375,9.716796875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\hub_region">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\hub_region\hub_region"
+          TopLeft="94.833329525259,26.85714143393" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\hub_region\dst_hub_region"
+          TopLeft="89.8333297239411,150.357135124353" />
+        <EdgeLayout
+          Id="Package\hub_region.Paths[ADO NET 源输出]"
+          TopLeft="168.3333296246,68.85714143393">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.4999936904229"
+              Start="0,0"
+              End="0,73.9999936904229">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.9999936904229" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\sat_region">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\sat_region\sat_region"
+          TopLeft="136,23" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\sat_region\dst_sat_region"
+          TopLeft="136,150" />
+        <AnnotationLayout
+          Text="t"
+          ParentId="Package\sat_region"
+          FontInfo="{assembly:Null}"
+          Size="34,60"
+          Id="5b0e28f9-1ad9-42d9-b5b7-82cb6b111619"
+          TopLeft="319,196" />
+        <EdgeLayout
+          Id="Package\sat_region.Paths[ADO NET 源输出]"
+          TopLeft="206,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,85"
+              Start="0,0"
+              End="12,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.5"
+                    Point2="0,42.5"
+                    Point3="4,42.5" />
+                  <mssgle:LineSegment
+                    End="8,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,42.5"
+                    Point2="12,42.5"
+                    Point3="12,46.5" />
+                  <mssgle:LineSegment
+                    End="12,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\hub_region\hub_region">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\hub_region\dst_hub_region">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\sat_region\sat_region">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\sat_region\dst_sat_region">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

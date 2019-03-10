@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2019 10:02:15 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="NEO"
+  DTS:CreatorName="NEO\JSKJ"
+  DTS:DTSID="{7CDD600D-FA75-4517-81D3-7C2DF740B6CD}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="link_employee_territory"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{6CEDCCB9-DCAD-4788-BCFF-3FAF21D9051D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\link_employee_territory"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{ABF2602A-CA36-4CCD-BD25-D97DE1E050D8}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="link_employee_territory"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\link_employee_territory\dst_link_employee_territory"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_link_employee_territory"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."link_employee_territory"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\link_employee_territory\dst_link_employee_territory.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[link_employee_territory_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="link_employee_territory_key"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[link_employee_territory_key]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_employee_territory_key]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[hub_territory_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_territory_key"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[hub_territory_key]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[hub_territory_key]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[hub_employee_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_employee_key"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[hub_employee_key]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[hub_employee_key]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[TerritoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="TerritoryID"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[TerritoryID]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[lastname]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[link_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="link_load_dts"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[link_load_dts]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_load_dts]" />
+                    <inputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].Columns[link_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="link_rec_src"
+                      externalMetadataColumnId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[link_rec_src]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[link_employee_territory_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="link_employee_territory_key" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[hub_territory_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_territory_key" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[hub_employee_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[lastname]"
+                      dataType="wstr"
+                      length="20"
+                      name="lastname" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[link_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="link_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入].ExternalColumns[link_rec_src]"
+                      dataType="wstr"
+                      length="60"
+                      name="link_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\link_employee_territory\dst_link_employee_territory.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\link_employee_territory\dst_link_employee_territory.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\dst_link_employee_territory.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\link_employee_territory\dst_link_employee_territory.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\link_employee_territory\link_employee_territory"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="link_employee_territory"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5', CONVERT(varchar,EmployeeTerritories.TerritoryID) + Employees.LastName
+                       +CONVERT(varchar,Employees.EmployeeID)) link_employee_territory_key ,
+       HashBytes('MD5',CONVERT(varchar,EmployeeTerritories.TerritoryID)) hub_territory_key ,
+	   HashBytes('MD5',CONVERT(varchar,Employees.EmployeeID) + Employees.LastName) hub_employee_key ,
+	   EmployeeTerritories.TerritoryID , 
+	   Employees.EmployeeID ,
+	   Employees.LastName , 
+	   CURRENT_TIMESTAMP link_load_dts ,
+	   'northwind;Territories;Employees' link_rec_src
+FROM 
+EmployeeTerritories INNER JOIN Employees 
+ON EmployeeTerritories.EmployeeID = Employees.EmployeeID ;</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\link_employee_territory\link_employee_territory.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_employee_territory_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[link_employee_territory_key]"
+                      length="8000"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_employee_territory_key]"
+                      name="link_employee_territory_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[hub_territory_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[hub_territory_key]"
+                      length="8000"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[hub_territory_key]"
+                      name="hub_territory_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[hub_employee_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[hub_employee_key]"
+                      length="8000"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[hub_employee_key]"
+                      name="hub_employee_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[TerritoryID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[TerritoryID]"
+                      length="20"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[TerritoryID]"
+                      name="TerritoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[link_load_dts]"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_load_dts]"
+                      name="link_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[link_rec_src]"
+                      length="31"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].Columns[link_rec_src]"
+                      name="link_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[link_employee_territory_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="link_employee_territory_key" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[hub_territory_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_territory_key" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[hub_employee_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[link_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="link_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出].ExternalColumns[link_rec_src]"
+                      dataType="wstr"
+                      length="31"
+                      name="link_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[link_employee_territory_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[link_employee_territory_key]"
+                      name="link_employee_territory_key" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[hub_territory_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[hub_territory_key]"
+                      name="hub_territory_key" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[hub_employee_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[hub_employee_key]"
+                      name="hub_employee_key" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[TerritoryID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[TerritoryID]"
+                      name="TerritoryID" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[link_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[link_load_dts]"
+                      name="link_load_dts" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[link_rec_src]"
+                      dataType="wstr"
+                      length="31"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[link_rec_src]"
+                      name="link_rec_src" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\link_employee_territory.Paths[ADO NET 源输出]"
+              endId="Package\link_employee_territory\dst_link_employee_territory.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\link_employee_territory\link_employee_territory.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="sql11">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="218,42"
+          Id="Package\link_employee_territory"
+          TopLeft="129.833328134484,71.428567728218" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\link_employee_territory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="242,42"
+          Id="Package\link_employee_territory\dst_link_employee_territory"
+          TopLeft="178.999992847443,185.642847607331" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\link_employee_territory\link_employee_territory"
+          TopLeft="175.666659646564,63.99999667917" />
+        <EdgeLayout
+          Id="Package\link_employee_territory.Paths[ADO NET 源输出]"
+          TopLeft="284.666659646564,105.99999667917">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.3333332008786,79.6428509281609"
+              Start="0,0"
+              End="15.3333332008786,72.1428509281609">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8214254640805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.8214254640805"
+                    Point2="0,39.8214254640805"
+                    Point3="4,39.8214254640805" />
+                  <mssgle:LineSegment
+                    End="11.3333332008786,39.8214254640805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.3333332008786,39.8214254640805"
+                    Point2="15.3333332008786,39.8214254640805"
+                    Point3="15.3333332008786,43.8214254640805" />
+                  <mssgle:LineSegment
+                    End="15.3333332008786,72.1428509281609" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\link_employee_territory\dst_link_employee_territory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\link_employee_territory\link_employee_territory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
