@@ -3,7 +3,7 @@
 
 IF OBJECT_ID('sat_supplier', 'U') IS NULL
 CREATE TABLE [sat_supplier](
-	[hub_supplier_key] varchar(36) NOT NULL , 
+	[hub_supplier_key] varbinary(50) NOT NULL , 
 	[SupplierID] [int]  NOT NULL,
 	[CompanyName] [nvarchar](40) NOT NULL,
 	[ContactName] [nvarchar](30) NULL,
@@ -16,7 +16,7 @@ CREATE TABLE [sat_supplier](
 	[Phone] [nvarchar](24) NULL,
 	[Fax] [nvarchar](24) NULL,
 	[HomePage] [ntext] NULL,
-	[hash_diff] varchar(36) NOT NULL ,
+	[hash_diff] varbinary(50) NOT NULL ,
 	[sat_load_dts] [datetime] NOT NULL 
  CONSTRAINT [PK_Supplier] PRIMARY KEY CLUSTERED 
 (
@@ -33,7 +33,7 @@ IF OBJECT_ID('hub_supplier', 'U') IS NOT NULL
 
 IF OBJECT_ID('hub_supplier', 'U') IS NULL
 CREATE TABLE [hub_supplier](
-	[hub_supplier_key] varchar(36) NOT NULL , 
+	[hub_supplier_key] varbinary(50) NOT NULL , 
 	[CompanyName] [nvarchar](40) NOT NULL ,
 	[hub_load_dts] [datetime] NOT NULL ,
 	[hub_rec_src] varchar(30) NOT NULL 

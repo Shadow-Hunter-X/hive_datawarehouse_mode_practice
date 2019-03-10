@@ -3,11 +3,11 @@ IF OBJECT_ID('link_order_employee', 'U') IS NOT NULL
 
 IF OBJECT_ID('link_order_employee', 'U') IS NULL
 CREATE TABLE [link_order_employee](
-	[link_order_employee_key] varchar(36) NOT NULL , 
-	[hub_order_key] varchar(36) NOT NULL , 
+	[link_order_employee_key] varbinary(50) NOT NULL , 
+	[hub_order_key] varbinary(50) NOT NULL , 
 	[orderid] [int] NOT NULL ,
 	[ProductID] [int] NOT NULL , 
-	[hub_employee_key] varchar(36) NOT NULL ,
+	[hub_employee_key] varbinary(50) NOT NULL ,
 	[EmployeeID] [int] NOT NULL,
 	[lastname] [nvarchar](10) NOT NULL,
 	[link_load_dts] [datetime] NOT NULL,

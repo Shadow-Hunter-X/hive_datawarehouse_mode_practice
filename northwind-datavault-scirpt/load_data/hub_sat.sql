@@ -5,6 +5,7 @@ SELECT HashBytes('MD5',customerid) hub_customer_key ,
 	   CURRENT_TIMESTAMP hub_load_dts ,
 	   'northwind;customers' hub_rec_src 	   
 FROM [dbo].[Customers]
+
 -- sat_customer
 SELECT HashBytes('MD5',customerid) hub_customer_key , 
 	[CustomerID] ,
@@ -61,16 +62,21 @@ SELECT HashBytes('MD5',CONVERT(nvarchar,[EmployeeID]) + [LastName] ) hub_employe
   FROM [dbo].[Employees]
 
 -- hub_order
-SELECT HashBytes('MD5',[OrderID]) hub_order_key
-      ,[OrderID]
+SELECT HashBytes('MD5',CONVERT(nvarchar,details.[OrderID]) + CONVERT(nvarchar,details.ProductID) ) hub_order_key
+      ,details.[OrderID]
+	  ,[ProductID]
       ,CURRENT_TIMESTAMP hub_load_dts 
 	  ,'northwind;Orders' hub_rec_src 	
-  FROM [dbo].[Orders]
-
+  FROM [dbo].[Order Details] details ;
+  --LEFT JOIN [dbo].[Orders] ON details.OrderID = Orders.OrderID
 
 -- sat_order
-SELECT HashBytes('MD5',CONVERT(nvarchar,[OrderID]) ) hub_order_key
-      ,[OrderID]
+SELECT HashBytes('MD5',CONVERT(nvarchar,details.[OrderID]) + CONVERT(nvarchar,details.ProductID) ) hub_order_key
+      ,details.[OrderID]
+	  ,details.ProductID 
+	  ,details.Quantity
+	  ,details.UnitPrice
+	  ,details.discount
       ,[CustomerID]
       ,[EmployeeID]
       ,[OrderDate]
@@ -84,13 +90,15 @@ SELECT HashBytes('MD5',CONVERT(nvarchar,[OrderID]) ) hub_order_key
       ,[ShipRegion]
       ,[ShipPostalCode]
       ,[ShipCountry]
-	  , HASHBYTES('MD5',[CustomerID]+CONVERT(nvarchar,[EmployeeID])+CONVERT(nvarchar,[OrderDate])+CONVERT(nvarchar,[RequiredDate]) 
-			+ CONVERT(nvarchar,[ShippedDate])+ CONVERT(nvarchar,[ShipVia]) + CONVERT(nvarchar,[Freight])  + ISNULL([ShipName],'')
-			+ ISNULL([ShipAddress],'') + ISNULL([ShipCity],'') + ISNULL([ShipRegion],'') +  ISNULL([ShipPostalCode],'') + ISNULL([ShipCountry],'')  \) hash_diff
+	  , HASHBYTES('MD5',[CustomerID]+CONVERT(nvarchar,[EmployeeID])+ISNULL(CONVERT(nvarchar,[OrderDate]),'')+ISNULL(CONVERT(nvarchar,[RequiredDate]) ,'')
+			+ ISNULL(CONVERT(nvarchar,[ShippedDate]),'')+ ISNULL(CONVERT(nvarchar,[ShipVia]),'') + ISNULL(CONVERT(nvarchar,[Freight]),'')  + ISNULL([ShipName],'')
+			+ ISNULL([ShipAddress],'') + ISNULL([ShipCity],'') + ISNULL([ShipRegion],'') +  ISNULL([ShipPostalCode],'') + ISNULL([ShipCountry],'') 
+			+ ISNULL(CONVERT(varchar,details.Quantity),'')  + ISNULL(CONVERT(varchar,details.UnitPrice),'')
+			) hash_diff
 	  , CURRENT_TIMESTAMP sat_load_dts 
 	  , 'northwind;Orders' sat_rec_src 	
-  FROM [dbo].[Orders]
-
+  FROM [dbo].[Order Details] details
+  LEFT JOIN [dbo].[Orders] Orders ON details.orderid = orders.orderid ;
 
 -- hub_product
 SELECT HashBytes('MD5',CONVERT(nvarchar,[ProductName]) ) hub_product_key
@@ -111,9 +119,9 @@ SELECT HashBytes('MD5',CONVERT(nvarchar,[ProductName]) ) hub_product_key
       ,[UnitsOnOrder]
       ,[ReorderLevel]
       ,[Discontinued]
-	  , HASHBYTES('MD5',CONVERT(nvarchar,[ProductID])+CONVERT(nvarchar,[SupplierID])+CONVERT(nvarchar,[CategoryID]) + CONVERT(nvarchar,[UnitPrice]) 
-	                  + CONVERT(nvarchar,[UnitsOnOrder]) + CONVERT(nvarchar,[ReorderLevel])  
-					  + ISNULL([QuantityPerUnit],'') + CONVERT(nvarchar,[Discontinued]) ) hash_diff
+	  , HASHBYTES('MD5',CONVERT(nvarchar,[ProductID])+CONVERT(nvarchar,[SupplierID])+CONVERT(nvarchar,[CategoryID]) + ISNULL(CONVERT(nvarchar,[UnitPrice]),'') 
+	                  + ISNULL(CONVERT(nvarchar,[UnitsOnOrder]),'') + ISNULL(CONVERT(nvarchar,[ReorderLevel]),'')
+					  + ISNULL([QuantityPerUnit],'') + ISNULL(CONVERT(nvarchar,[Discontinued]) ,'')) hash_diff
 	  , CURRENT_TIMESTAMP sat_load_dts 
 	  , 'northwind;Products' sat_rec_src 	
   FROM [dbo].[Products]
@@ -138,7 +146,6 @@ SELECT HashBytes('MD5',CONVERT(nvarchar,[ProductName]) ) hub_product_key
  -- hub_supplier
  SELECT HashBytes('MD5',[CompanyName]) hub_shipper_key 
       ,[CompanyName]
-      ,[Phone]
 	  , CURRENT_TIMESTAMP hub_load_dts 
 	  ,'northwind;Shippers' hub_rec_src 	
   FROM [dbo].[Shippers]

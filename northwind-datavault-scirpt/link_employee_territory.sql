@@ -3,14 +3,14 @@ IF OBJECT_ID('link_employee_territory', 'U') IS NOT NULL
 
 IF OBJECT_ID('link_employee_territory', 'U') IS NULL
 CREATE TABLE [link_employee_territory](
-	[link_employee_territory_key] varchar(36) NOT NULL , 
-	[hub_territory_key] varchar(36) NOT NULL , 
-	[hub_employee_key] varchar(36) NOT NULL ,
+	[link_employee_territory_key] varbinary(50) NOT NULL , 
+	[hub_territory_key] varbinary(50) NOT NULL , 
+	[hub_employee_key] varbinary(50) NOT NULL ,
 	[TerritoryID] [nvarchar](20) NOT NULL,
 	[EmployeeID] [int] NOT NULL ,
-	[last_name] [nvarchar](10) NOT NULL,
+	[lastname] [nvarchar](20) NOT NULL,
 	[link_load_dts] [datetime] NOT NULL,
-	[link_rec_src] varchar(30) NULL 
+	[link_rec_src] varchar(60) NULL 
  CONSTRAINT [PK_link_Customers] PRIMARY KEY CLUSTERED 
 (
 	[link_employee_territory_key] ASC

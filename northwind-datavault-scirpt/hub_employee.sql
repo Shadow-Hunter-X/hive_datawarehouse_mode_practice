@@ -4,7 +4,7 @@ IF OBJECT_ID('sat_employee', 'U') IS NOT NULL
 
 IF OBJECT_ID('sat_employee', 'U') IS NULL
 CREATE TABLE [sat_employee](
-	[hub_employee_key] varchar(36) NOT NULL ,
+	[hub_employee_key] varbinary(50) NOT NULL ,
 	[EmployeeID] [int] NOT NULL,
 	[LastName] [nvarchar](20) NOT NULL,
 	[FirstName] [nvarchar](10) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE [sat_employee](
 	[Notes] [ntext] NULL,
 	[ReportsTo] [int] NULL,
 	[PhotoPath] [nvarchar](255) NULL,
-	[hash_diff] varchar(36) NOT NULL ,
+	[hash_diff] varbinary(50) NOT NULL ,
 	[sat_load_dts] [datetime] NOT NULL ,
 	[sat_rec_src] varchar(30) NULL 
  CONSTRAINT [PK_Employees] PRIMARY KEY CLUSTERED 
@@ -40,7 +40,7 @@ IF OBJECT_ID('hub_employee', 'U') IS NOT NULL
 
 IF OBJECT_ID('hub_employee', 'U') IS NULL
 CREATE TABLE [hub_employee](
-	[hub_employee_key] varchar(36) NOT NULL ,
+	[hub_employee_key] varbinary(50) NOT NULL ,
 	[EmployeeID] [int] NOT NULL,
 	[lastname] [nvarchar](10) NOT NULL,
 	[hub_load_dts] [datetime] NOT NULL ,

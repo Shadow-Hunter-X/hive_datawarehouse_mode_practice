@@ -3,10 +3,10 @@ IF OBJECT_ID('link_product_supplier', 'U') IS NOT NULL
 
 IF OBJECT_ID('link_product_supplier', 'U') IS NULL
 CREATE TABLE [link_product_supplier](
-	[link_product_supplier_key] varchar(36) NOT NULL , 
-	[hub_supplier_key] varchar(36) NOT NULL , 
+	[link_product_supplier_key] varbinary(50) NOT NULL , 
+	[hub_supplier_key] varbinary(50) NOT NULL , 
 	[CompanyName] [nvarchar](40) NOT NULL,
-	[hub_product_key] varchar(36) NOT NULL , 
+	[hub_product_key] varbinary(50) NOT NULL , 
 	[ProductName] [nvarchar](40) NOT NULL,
 	[link_load_dts] [datetime] NOT NULL,
 	[link_rec_src] varchar(30) NULL 
@@ -18,8 +18,3 @@ CREATE TABLE [link_product_supplier](
 
 GO
 
-
-SELECT * 
-FROM 
-Suppliers LEFT JOIN Products
-ON Suppliers.SupplierID = Products.SupplierID

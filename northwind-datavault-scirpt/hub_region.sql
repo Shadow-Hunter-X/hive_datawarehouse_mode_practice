@@ -3,10 +3,10 @@ IF OBJECT_ID('sat_region', 'U') IS NOT NULL
 
 IF OBJECT_ID('sat_region', 'U') IS NULL
 CREATE TABLE [sat_region](
-	[hub_region_key] varchar(36) NOT NULL ,
+	[hub_region_key] varbinary(50) NOT NULL ,
 	[RegionID] [int] NOT NULL,
 	[RegionDescription] [nchar](50) NOT NULL,
-	[hash_diff] varchar(36) NOT NULL ,
+	[hash_diff] varbinary(50) NOT NULL ,
 	[sat_load_dts] [datetime] NOT NULL ,
 	[sat_rec_src] varchar(30)  NULL 
  CONSTRAINT [PK_Region] PRIMARY KEY NONCLUSTERED 
@@ -18,12 +18,13 @@ CREATE TABLE [sat_region](
 GO
 
 ------------------------------------------------------------
+
 IF OBJECT_ID('hub_region', 'U') IS NOT NULL 
   DROP TABLE hub_region; 
 
 IF OBJECT_ID('hub_region', 'U') IS NULL
 CREATE TABLE [hub_region](
-    [hub_region_key] varchar(36) NOT NULL ,
+    [hub_region_key] varbinary(50) NOT NULL ,
 	[RegionID] [int] NOT NULL ,
 	[RegionDescription] [nchar](50) NOT NULL ,
 	[hub_load_dts] [datetime] NOT NULL ,

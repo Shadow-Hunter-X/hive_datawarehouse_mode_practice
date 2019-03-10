@@ -3,11 +3,11 @@ IF OBJECT_ID('sat_shipper', 'U') IS NOT NULL
 
 IF OBJECT_ID('sat_shipper', 'U') IS NULL
 CREATE TABLE [sat_shipper](
-	[hub_shipper_key] varchar(36) NOT NULL , 
+	[hub_shipper_key] varbinary(50) NOT NULL , 
 	[ShipperID] [int]  NOT NULL,
 	[CompanyName] [nvarchar](40) NOT NULL,
 	[Phone] [nvarchar](24) NULL ,
-	[hash_diff] varchar(36) NOT NULL ,
+	[hash_diff] varbinary(50) NOT NULL ,
 	[sat_load_dts] [datetime] NOT NULL ,
 	[sat_rec_src] varchar(30)  NULL 
  CONSTRAINT [PK_Shippers] PRIMARY KEY CLUSTERED 
@@ -25,7 +25,7 @@ IF OBJECT_ID('hub_shipper', 'U') IS NOT NULL
 
 IF OBJECT_ID('hub_shipper', 'U') IS NULL
 CREATE TABLE [hub_shipper](
-	[hub_shipper_key] varchar(36) NOT NULL , 
+	[hub_shipper_key] varbinary(50) NOT NULL , 
 	[CompanyName] [nvarchar](40) NOT NULL,
 	[hub_load_dts] [datetime] NOT NULL ,
 	[hub_rec_src] varchar(30) NOT NULL 
