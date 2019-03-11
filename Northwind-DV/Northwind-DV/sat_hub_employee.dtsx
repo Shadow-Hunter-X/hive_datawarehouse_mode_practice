@@ -1,0 +1,1424 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2019 6:45:41 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="NEO"
+  DTS:CreatorName="NEO\JSKJ"
+  DTS:DTSID="{60BB54AF-C458-48C9-9A90-4B58240BA65F}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="sat_hub_employee"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{BB272938-0DF5-4C98-A118-28D019B3C44E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\hub"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{44538972-CC0D-4292-9383-AFE0B8F5835A}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="hub"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\hub\dst_employee"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_employee"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."hub_employee"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\hub\dst_employee.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].Columns[hub_employee_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_employee_key"
+                      externalMetadataColumnId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_employee_key]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_employee_key]" />
+                    <inputColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[lastname]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].Columns[hub_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hub_load_dts"
+                      externalMetadataColumnId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_load_dts]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_load_dts]" />
+                    <inputColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].Columns[hub_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="hub_rec_src"
+                      externalMetadataColumnId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_rec_src]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_employee_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[lastname]"
+                      dataType="wstr"
+                      length="10"
+                      name="lastname" />
+                    <externalMetadataColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="hub_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\hub\dst_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="hub_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\hub\dst_employee.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\hub\dst_employee.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub\dst_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\hub\dst_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\hub\dst_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\hub\dst_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\hub\hub_employee"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="hub_employee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',CONVERT(nvarchar,[EmployeeID]) + [LastName]) hub_employee_key
+      ,[EmployeeID]
+      ,[LastName]
+	  ,CURRENT_TIMESTAMP hub_load_dts 
+	  ,'northwind;Employees' hub_rec_src 	
+FROM [dbo].[Employees]</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\hub\hub_employee.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\hub\hub_employee.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_employee_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_employee_key]"
+                      length="8000"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_employee_key]"
+                      name="hub_employee_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_load_dts]"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_load_dts]"
+                      name="hub_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_rec_src]"
+                      length="19"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源输出].Columns[hub_rec_src]"
+                      name="hub_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_employee_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="hub_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_rec_src]"
+                      dataType="wstr"
+                      length="19"
+                      name="hub_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[hub_employee_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[hub_employee_key]"
+                      name="hub_employee_key" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[hub_load_dts]"
+                      name="hub_load_dts" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[hub_rec_src]"
+                      dataType="wstr"
+                      length="19"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[hub_rec_src]"
+                      name="hub_rec_src" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\hub\hub_employee.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\hub.Paths[ADO NET 源输出]"
+              endId="Package\hub\dst_employee.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\hub\hub_employee.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sat"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{12B9238A-7A52-4391-A560-C3160205598B}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sat"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\sat\dst_sat_employee"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_sat_employee"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."sat_employee"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\sat\dst_sat_employee.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[hub_employee_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_employee_key"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_employee_key]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[hub_employee_key]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[LastName]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[FirstName]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Title]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[TitleOfCourtesy]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="TitleOfCourtesy"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[TitleOfCourtesy]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[TitleOfCourtesy]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[BirthDate]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[HireDate]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Address]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[City]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[City]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Region]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[PostalCode]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Country]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[HomePhone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="HomePhone"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[HomePhone]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[HomePhone]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Extension]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Extension"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Extension]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Extension]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Photo]"
+                      cachedDataType="image"
+                      cachedName="Photo"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Photo]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Photo]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[Notes]"
+                      cachedDataType="nText"
+                      cachedName="Notes"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Notes]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Notes]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[ReportsTo]"
+                      cachedDataType="i4"
+                      cachedName="ReportsTo"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[ReportsTo]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[ReportsTo]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[PhotoPath]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PhotoPath"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[PhotoPath]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[PhotoPath]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[hash_diff]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hash_diff"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[hash_diff]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[sat_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="sat_load_dts"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[sat_load_dts]" />
+                    <inputColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].Columns[sat_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="sat_rec_src"
+                      externalMetadataColumnId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[sat_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[hub_employee_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[HomePhone]"
+                      dataType="wstr"
+                      length="24"
+                      name="HomePhone" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Extension]"
+                      dataType="wstr"
+                      length="4"
+                      name="Extension" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Photo]"
+                      dataType="bytes"
+                      length="2147483647"
+                      name="Photo" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[Notes]"
+                      dataType="wstr"
+                      length="1073741823"
+                      name="Notes" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[PhotoPath]"
+                      dataType="wstr"
+                      length="255"
+                      name="PhotoPath" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="50"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\sat\dst_sat_employee.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat\dst_sat_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\sat\dst_sat_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\sat\dst_sat_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\sat\dst_sat_employee.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\sat\sat_employee"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="sat_employee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',CONVERT(nvarchar,[EmployeeID]) + [LastName] ) hub_employee_key 
+      ,[EmployeeID]
+      ,[LastName]
+      ,[FirstName]
+      ,[Title]
+      ,[TitleOfCourtesy]
+      ,[BirthDate]
+      ,[HireDate]
+      ,[Address]
+      ,[City]
+      ,[Region]
+      ,[PostalCode]
+      ,[Country]
+      ,[HomePhone]
+      ,[Extension]
+      ,[Photo]
+      ,[Notes]
+      ,[ReportsTo]
+      ,[PhotoPath]
+	  , HASHBYTES('MD5',[FirstName]+[Title]+[TitleOfCourtesy]+CONVERT(nvarchar,[BirthDate])+CONVERT(nvarchar,[HireDate]) 
+	                  + ISNULL([Address],'') + ISNULL([City],'')  + ISNULL([Region],'') + ISNULL([PostalCode],'') 
+					  + ISNULL([Country],'') + ISNULL([HomePhone],'') +  ISNULL([Extension],'') 
+					  + ISNULL(CONVERT(nvarchar,[ReportsTo]),'') + ISNULL([PhotoPath],'') ) hash_diff
+	  , CURRENT_TIMESTAMP sat_load_dts 
+	  , 'northwind;Employees' sat_rec_src 	
+  FROM [dbo].[Employees]</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\sat\sat_employee.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\sat\sat_employee.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[hub_employee_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_employee_key]"
+                      length="8000"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[hub_employee_key]"
+                      name="hub_employee_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[FirstName]"
+                      length="10"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[TitleOfCourtesy]"
+                      length="25"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[TitleOfCourtesy]"
+                      name="TitleOfCourtesy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[BirthDate]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[HireDate]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Address]"
+                      length="60"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[HomePhone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[HomePhone]"
+                      length="24"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[HomePhone]"
+                      name="HomePhone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Extension]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Extension]"
+                      length="4"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Extension]"
+                      name="Extension"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Photo]"
+                      dataType="image"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Photo]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Photo]"
+                      name="Photo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Notes]"
+                      dataType="nText"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Notes]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[Notes]"
+                      name="Notes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[ReportsTo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[ReportsTo]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[ReportsTo]"
+                      name="ReportsTo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[PhotoPath]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[PhotoPath]"
+                      length="255"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[PhotoPath]"
+                      name="PhotoPath"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      length="8000"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      name="hash_diff"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      name="sat_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      length="19"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      name="sat_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[hub_employee_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[HomePhone]"
+                      dataType="wstr"
+                      length="24"
+                      name="HomePhone" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Extension]"
+                      dataType="wstr"
+                      length="4"
+                      name="Extension" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Photo]"
+                      dataType="image"
+                      name="Photo" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[Notes]"
+                      dataType="nText"
+                      name="Notes" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[PhotoPath]"
+                      dataType="wstr"
+                      length="255"
+                      name="PhotoPath" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="19"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[hub_employee_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[hub_employee_key]"
+                      name="hub_employee_key" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[TitleOfCourtesy]"
+                      name="TitleOfCourtesy" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[HomePhone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[HomePhone]"
+                      name="HomePhone" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Extension]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Extension]"
+                      name="Extension" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Photo]"
+                      dataType="image"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Photo]"
+                      name="Photo" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Notes]"
+                      dataType="nText"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[Notes]"
+                      name="Notes" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[ReportsTo]"
+                      name="ReportsTo" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[PhotoPath]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[PhotoPath]"
+                      name="PhotoPath" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      name="hash_diff" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      name="sat_load_dts" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      length="19"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      name="sat_rec_src" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\sat\sat_employee.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\sat.Paths[ADO NET 源输出]"
+              endId="Package\sat\dst_sat_employee.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\sat\sat_employee.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[约束]"
+      DTS:CreationName=""
+      DTS:DTSID="{F5D7E173-F73C-4CD3-9CDD-1099F21CD17F}"
+      DTS:From="Package\hub"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="约束"
+      DTS:To="Package\sat"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="sql11">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="98,42"
+          Id="Package\hub"
+          TopLeft="124.833328333166,64.928568060301" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\sat"
+          TopLeft="124.833328333166,154.071420648877" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[约束]"
+          TopLeft="173.833328333166,106.928568060301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1428525885759"
+              Start="0,0"
+              End="0,39.6428525885759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6428525885759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.873046875,14.963027856788,19.74609375,9.716796875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\hub">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\hub\hub_employee"
+          TopLeft="20.6666658057107,21.285713147144" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\hub\dst_employee"
+          TopLeft="24.8333323068089,105.785708830065" />
+        <EdgeLayout
+          Id="Package\hub.Paths[ADO NET 源输出]"
+          TopLeft="98.7499990562598,63.285713147144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.4999956829209"
+              Start="0,0"
+              End="0,34.9999956829209">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.9999956829209" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\hub\hub_employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\hub\dst_employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\sat">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\sat\sat_employee"
+          TopLeft="46.8333331015375,27" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\sat\dst_sat_employee"
+          TopLeft="41,112.428567064052" />
+        <EdgeLayout
+          Id="Package\sat.Paths[ADO NET 源输出]"
+          TopLeft="125.916666550769,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.428567064052"
+              Start="0,0"
+              End="0,35.928567064052">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.928567064052" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\sat\dst_sat_employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

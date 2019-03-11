@@ -1,0 +1,796 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2019 6:30:08 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="NEO"
+  DTS:CreatorName="NEO\JSKJ"
+  DTS:DTSID="{4D211CF6-DFE7-4883-9523-EC6C2C296FC1}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="sat_customer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{6591F84F-7B16-493D-B7DE-AE0208FECB99}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\数据流任务"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{2B92BFEC-152F-4BA9-AB6A-A21E05027F6B}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="数据流任务"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\数据流任务\dst_sat_customer"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_sat_customer"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."sat_customer"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\数据流任务\dst_sat_customer.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[hub_customer_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_customer_key"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[hub_customer_key]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[hub_customer_key]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[CustomerID]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CompanyName"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[CompanyName]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[ContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactName"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[ContactName]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[ContactName]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[ContactTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactTitle"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[ContactTitle]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[ContactTitle]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Address]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[City]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[City]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Region]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[PostalCode]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Country]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Phone]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Fax]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Fax]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[hash_diff]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hash_diff"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[hash_diff]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[sat_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="sat_load_dts"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[sat_load_dts]" />
+                    <inputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].Columns[sat_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="sat_rec_src"
+                      externalMetadataColumnId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[sat_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[hub_customer_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="50"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\数据流任务\dst_sat_customer.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\数据流任务\dst_sat_customer.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\数据流任务\dst_sat_customer.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\数据流任务\dst_sat_customer.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\数据流任务\sat_customer"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="sat_customer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',customerid) hub_customer_key , 
+	[CustomerID] ,
+	[CompanyName] ,
+	[ContactName] ,
+	[ContactTitle] ,
+	[Address] ,
+	[City] ,
+	[Region] ,
+	[PostalCode] ,
+	[Country] ,
+	[Phone] ,
+	[Fax] ,
+	HASHBYTES('MD5',[CompanyName]+ISNULL([ContactName],'')+ISNULL([ContactTitle],'')+ISNULL([Address],'')+
+	         ISNULL([City],'')+ISNULL([Region],'')+ISNULL([PostalCode],'')+[Country]+ISNULL([Phone],'')+ISNULL([Fax],'')) hash_diff , 
+	CURRENT_TIMESTAMP sat_load_dts ,
+	'northwind;customers' sat_rec_src 	   
+FROM [dbo].[Customers]</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\数据流任务\sat_customer.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[hub_customer_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[hub_customer_key]"
+                      length="8000"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[hub_customer_key]"
+                      name="hub_customer_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[CompanyName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[CompanyName]"
+                      length="40"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[CompanyName]"
+                      name="CompanyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[ContactName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[ContactName]"
+                      length="30"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[ContactName]"
+                      name="ContactName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[ContactTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[ContactTitle]"
+                      length="30"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[ContactTitle]"
+                      name="ContactTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Address]"
+                      length="60"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[Fax]"
+                      name="Fax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      length="8000"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      name="hash_diff"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      name="sat_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      length="19"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      name="sat_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[hub_customer_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="19"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[hub_customer_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[hub_customer_key]"
+                      name="hub_customer_key" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[CompanyName]"
+                      name="CompanyName" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ContactName]"
+                      name="ContactName" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ContactTitle]"
+                      name="ContactTitle" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[Fax]"
+                      name="Fax" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      name="hash_diff" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      name="sat_load_dts" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      length="19"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      name="sat_rec_src" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\数据流任务\sat_customer.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\数据流任务.Paths[ADO NET 源输出]"
+              endId="Package\数据流任务\dst_sat_customer.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\数据流任务\sat_customer.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="sql11">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\数据流任务"
+          TopLeft="143.999994238218,75.142853252742" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\数据流任务">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\数据流任务\sat_customer"
+          TopLeft="29.8333321081268,17.57142762262" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\数据流任务\dst_sat_customer"
+          TopLeft="29.8333321081268,141.071421313043" />
+        <EdgeLayout
+          Id="Package\数据流任务.Paths[ADO NET 源输出]"
+          TopLeft="105.833332108127,59.57142762262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,81.4999936904229"
+              Start="0,0"
+              End="12,73.9999936904229">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.7499968452115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.7499968452115"
+                    Point2="0,40.7499968452115"
+                    Point3="4,40.7499968452115" />
+                  <mssgle:LineSegment
+                    End="8,40.7499968452115" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,40.7499968452115"
+                    Point2="12,40.7499968452115"
+                    Point3="12,44.7499968452115" />
+                  <mssgle:LineSegment
+                    End="12,73.9999936904229" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\数据流任务\sat_customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\数据流任务\dst_sat_customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

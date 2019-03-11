@@ -1,0 +1,1418 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2019 8:54:21 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="NEO"
+  DTS:CreatorName="NEO\JSKJ"
+  DTS:DTSID="{F120EADF-995D-4ADE-85E2-3EBDC15593D9}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="2052"
+  DTS:ObjectName="sat_hub_order"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{3F381ADD-5F36-406F-84B0-4247A66C4E91}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\hub_order"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{03632996-4BF3-4D8A-980A-9DACDC5E4157}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="hub_order"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\hub_order\dst_hub_order"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_hub_order"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."hub_order"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\hub_order\dst_hub_order.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].Columns[hub_order_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_order_key"
+                      externalMetadataColumnId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_order_key]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_order_key]" />
+                    <inputColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[orderid]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[ProductID]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].Columns[hub_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hub_load_dts"
+                      externalMetadataColumnId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_load_dts]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_load_dts]" />
+                    <inputColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].Columns[hub_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="hub_rec_src"
+                      externalMetadataColumnId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_rec_src]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_order_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_order_key" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[orderid]"
+                      dataType="i4"
+                      name="orderid" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="hub_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="hub_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\hub_order\dst_hub_order.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub_order\dst_hub_order.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\hub_order\dst_hub_order.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\hub_order\dst_hub_order.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\hub_order\dst_hub_order.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\hub_order\hub_order"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="hub_order"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',CONVERT(nvarchar,details.[OrderID]) + CONVERT(nvarchar,details.ProductID) ) hub_order_key
+      ,details.[OrderID]
+	  ,[ProductID]
+      ,CURRENT_TIMESTAMP hub_load_dts 
+	  ,'northwind;Orders' hub_rec_src 	
+  FROM [dbo].[Order Details] details ;</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\hub_order\hub_order.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_order_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[hub_order_key]"
+                      length="8000"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_order_key]"
+                      name="hub_order_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[OrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[OrderID]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[ProductID]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[hub_load_dts]"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_load_dts]"
+                      name="hub_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[hub_rec_src]"
+                      length="16"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].Columns[hub_rec_src]"
+                      name="hub_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[hub_order_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_order_key" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="hub_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源输出].ExternalColumns[hub_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      name="hub_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[hub_order_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[hub_order_key]"
+                      name="hub_order_key" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[OrderID]"
+                      dataType="i4"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[hub_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[hub_load_dts]"
+                      name="hub_load_dts" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[hub_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[hub_rec_src]"
+                      name="hub_rec_src" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\hub_order\hub_order.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\hub_order.Paths[ADO NET 源输出]"
+              endId="Package\hub_order\dst_hub_order.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\hub_order\hub_order.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sat_order"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="数据流任务"
+      DTS:DTSID="{6C308137-8CFD-40A8-A8D0-90BA0368C4F0}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sat_order"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\sat_order\dst_sat_order"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;2"
+              description="将数据加载到使用数据库表或视图的 ADO.NET 兼容数据库中。将数据加载到新表或现有表中。例如，使用适用于 ODBC 的 ADO.NET 访问接口将数据加载到 ODBC 目标中。"
+              name="dst_sat_order"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="目标数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."sat_order"</property>
+                <property
+                  dataType="System.Int32"
+                  description="指定每批的行数。默认值为 0，即使用与 SSIS 内部缓冲区相同的大小。 "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。 "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指定是否使用 SqlBulkCopy 接口来改进大容量插入操作的性能。只有某些特定提供程序支持此接口。"
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\sat_order\dst_sat_order.Connections[IDbConnection]"
+                  connectionManagerID="{3435575D-1C38-4BC0-9694-5DB21616DA03}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.DataVaultNorthwind1]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET 目标输入">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[hub_order_key]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hub_order_key"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_order_key]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[hub_order_key]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[OrderID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ProductID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[Quantity]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[UnitPrice]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[discount]"
+                      cachedDataType="r4"
+                      cachedName="discount"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[Discount]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[discount]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[CustomerID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[OrderDate]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[RequiredDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RequiredDate"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[RequiredDate]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[RequiredDate]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShippedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShippedDate"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShippedDate]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShippedDate]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipVia]"
+                      cachedDataType="i4"
+                      cachedName="ShipVia"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipVia]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipVia]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[Freight]"
+                      cachedDataType="cy"
+                      cachedName="Freight"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[Freight]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[Freight]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ShipName"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipName]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipName]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="ShipAddress"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipAddress]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipAddress]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipCity]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ShipCity"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipCity]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipCity]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipRegion]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ShipRegion"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipRegion]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipRegion]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipPostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ShipPostalCode"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipPostalCode]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipPostalCode]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[ShipCountry]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ShipCountry"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipCountry]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipCountry]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[hash_diff]"
+                      cachedDataType="bytes"
+                      cachedLength="8000"
+                      cachedName="hash_diff"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[hash_diff]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[sat_load_dts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="sat_load_dts"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[sat_load_dts]" />
+                    <inputColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].Columns[sat_rec_src]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="sat_rec_src"
+                      externalMetadataColumnId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[sat_rec_src]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[hub_order_key]"
+                      dataType="bytes"
+                      length="50"
+                      name="hub_order_key" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[UnitPrice]"
+                      dataType="numeric"
+                      name="UnitPrice"
+                      precision="19"
+                      scale="255" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[Quantity]"
+                      dataType="i2"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[Discount]"
+                      dataType="r4"
+                      name="Discount" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      name="RequiredDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipVia]"
+                      dataType="i4"
+                      name="ShipVia" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[Freight]"
+                      dataType="numeric"
+                      name="Freight"
+                      precision="19"
+                      scale="255" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShipName" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipAddress]"
+                      dataType="wstr"
+                      length="60"
+                      name="ShipAddress" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipCity]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCity" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipRegion]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipRegion" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShipPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[ShipCountry]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCountry" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="50"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="30"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\sat_order\dst_sat_order.Outputs[ADO NET 目标错误输出]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET 目标错误输出"
+                  synchronousInputId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat_order\dst_sat_order.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\dst_sat_order.Outputs[ADO NET 目标错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\sat_order\dst_sat_order.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\dst_sat_order.Outputs[ADO NET 目标错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\sat_order\sat_order"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; 保留所有权利; http://www.microsoft.com/sql/support;4"
+              description="通过使用相应的 .NET Framework 数据访问接口来使用 SQL Server、OLE DB、ODBC 或 Oracle 中的数据。使用 Transact-SQL 语句定义结果集。例如，使用适用于 SQL Server 的 .NET Framework 数据访问接口从 SQL Server 中提取数据。"
+              name="sat_order"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="指定组件用来提取数据的 SQL 语句。"
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT HashBytes('MD5',CONVERT(nvarchar,details.[OrderID]) + CONVERT(nvarchar,details.ProductID) ) hub_order_key
+      ,details.[OrderID]
+	  ,details.ProductID 
+	  ,details.Quantity
+	  ,details.UnitPrice
+	  ,details.discount
+      ,[CustomerID]
+      ,[EmployeeID]
+      ,[OrderDate]
+      ,[RequiredDate]
+      ,[ShippedDate]
+      ,[ShipVia]
+      ,[Freight]
+      ,[ShipName]
+      ,[ShipAddress]
+      ,[ShipCity]
+      ,[ShipRegion]
+      ,[ShipPostalCode]
+      ,[ShipCountry]
+	  , HASHBYTES('MD5',[CustomerID]+CONVERT(nvarchar,[EmployeeID])+ISNULL(CONVERT(nvarchar,[OrderDate]),'')+ISNULL(CONVERT(nvarchar,[RequiredDate]) ,'')
+			+ ISNULL(CONVERT(nvarchar,[ShippedDate]),'')+ ISNULL(CONVERT(nvarchar,[ShipVia]),'') + ISNULL(CONVERT(nvarchar,[Freight]),'')  + ISNULL([ShipName],'')
+			+ ISNULL([ShipAddress],'') + ISNULL([ShipCity],'') + ISNULL([ShipRegion],'') +  ISNULL([ShipPostalCode],'') + ISNULL([ShipCountry],'') 
+			+ ISNULL(CONVERT(varchar,details.Quantity),'')  + ISNULL(CONVERT(varchar,details.UnitPrice),'')
+			) hash_diff
+	  , CURRENT_TIMESTAMP sat_load_dts 
+	  , 'northwind;Orders' sat_rec_src 	
+  FROM [dbo].[Order Details] details
+  LEFT JOIN [dbo].[Orders] Orders ON details.orderid = orders.orderid</property>
+                <property
+                  dataType="System.Int32"
+                  description="命令超时前等待的时间(秒)。值为 0，表示无限期等待。"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="指示是否允许非字符串外部列隐式地转换为输出列中的字符串。"
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="源数据库表名。"
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="指定检索外部列信息的模式"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter, Microsoft.SqlServer.ADONETSrc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\sat_order\sat_order.Connections[IDbConnection]"
+                  connectionManagerID="{01A20602-54CE-43A5-9E8C-6DEA6F532861}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind]"
+                  description="托管连接管理器"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出]"
+                  name="ADO NET 源输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[hub_order_key]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[hub_order_key]"
+                      length="8000"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[hub_order_key]"
+                      name="hub_order_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[OrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[OrderID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ProductID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[Quantity]"
+                      dataType="i2"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[Quantity]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[UnitPrice]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[discount]"
+                      dataType="r4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[discount]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[discount]"
+                      name="discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[OrderDate]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[RequiredDate]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[RequiredDate]"
+                      name="RequiredDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShippedDate]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShippedDate]"
+                      name="ShippedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipVia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipVia]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipVia]"
+                      name="ShipVia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[Freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[Freight]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[Freight]"
+                      name="Freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipName]"
+                      length="40"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipName]"
+                      name="ShipName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipAddress]"
+                      length="60"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipAddress]"
+                      name="ShipAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipCity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipCity]"
+                      length="15"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipCity]"
+                      name="ShipCity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipRegion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipRegion]"
+                      length="15"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipRegion]"
+                      name="ShipRegion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipPostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipPostalCode]"
+                      length="10"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipPostalCode]"
+                      name="ShipPostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipCountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipCountry]"
+                      length="15"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[ShipCountry]"
+                      name="ShipCountry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      length="8000"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[hash_diff]"
+                      name="hash_diff"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[sat_load_dts]"
+                      name="sat_load_dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="转换"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      length="16"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].Columns[sat_rec_src]"
+                      name="sat_rec_src"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[hub_order_key]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hub_order_key" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[Quantity]"
+                      dataType="i2"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[discount]"
+                      dataType="r4"
+                      name="discount" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      name="RequiredDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipVia]"
+                      dataType="i4"
+                      name="ShipVia" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipName]"
+                      dataType="wstr"
+                      length="40"
+                      name="ShipName" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipAddress]"
+                      dataType="wstr"
+                      length="60"
+                      name="ShipAddress" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipCity]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCity" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipRegion]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipRegion" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="ShipPostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[ShipCountry]"
+                      dataType="wstr"
+                      length="15"
+                      name="ShipCountry" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      name="hash_diff" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      name="sat_load_dts" />
+                    <externalMetadataColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源输出].ExternalColumns[sat_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      name="sat_rec_src" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出]"
+                  isErrorOut="true"
+                  name="ADO NET 源错误输出">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[hub_order_key]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[hub_order_key]"
+                      name="hub_order_key" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[OrderID]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[Quantity]"
+                      dataType="i2"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[discount]"
+                      dataType="r4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[discount]"
+                      name="discount" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[RequiredDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[RequiredDate]"
+                      name="RequiredDate" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShippedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShippedDate]"
+                      name="ShippedDate" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipVia]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipVia]"
+                      name="ShipVia" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[Freight]"
+                      dataType="cy"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[Freight]"
+                      name="Freight" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipName]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipName]"
+                      name="ShipName" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipAddress]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipAddress]"
+                      name="ShipAddress" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipCity]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipCity]"
+                      name="ShipCity" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipRegion]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipRegion]"
+                      name="ShipRegion" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipPostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipPostalCode]"
+                      name="ShipPostalCode" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipCountry]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ShipCountry]"
+                      name="ShipCountry" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      dataType="bytes"
+                      length="8000"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[hash_diff]"
+                      name="hash_diff" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[sat_load_dts]"
+                      name="sat_load_dts" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[sat_rec_src]"
+                      name="sat_rec_src" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\sat_order\sat_order.Outputs[ADO NET 源错误输出].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\sat_order.Paths[ADO NET 源输出]"
+              endId="Package\sat_order\dst_sat_order.Inputs[ADO NET 目标输入]"
+              name="ADO NET 源输出"
+              startId="Package\sat_order\sat_order.Outputs[ADO NET 源输出]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[约束]"
+      DTS:CreationName=""
+      DTS:DTSID="{9B983433-25E7-4945-8616-46BAE2AE19BB}"
+      DTS:From="Package\hub_order"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="约束"
+      DTS:To="Package\sat_order"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--此 CDATA 部分包含包的布局信息。该部分包括(x,y)坐标、宽度和高度之类的信息。-->
+<!--如果您手动编辑此部分并且出错，则可以删除此部分。 -->
+<!--该包仍将能够正常加载，但以前的布局信息将丢失，并且设计器将自动在设计图面上重新排列这些元素。-->
+<Objects
+  Version="sql11">
+  <!--下面的每个节点都将包含不会影响运行时行为的属性。-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\hub_order"
+          TopLeft="76.4999969204268,34.285712482978" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\sat_order"
+          TopLeft="73.1666637195482,129.928564739471" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[约束]"
+          TopLeft="141.833330319988,76.285712482978">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.642852256493"
+              Start="0,0"
+              End="0,46.142852256493">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.142852256493" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.873046875,18.2130276907465,19.74609375,9.716796875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\hub_order">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\hub_order\hub_order"
+          TopLeft="61.4999975164732,9.21428519244099" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\hub_order\dst_hub_order"
+          TopLeft="57.333331015375,125.285707833816" />
+        <EdgeLayout
+          Id="Package\hub_order.Paths[ADO NET 源输出]"
+          TopLeft="132.416664265924,51.214285192441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.0714226413749"
+              Start="0,0"
+              End="0,66.5714226413749">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5714226413749" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\sat_order">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\sat_order\sat_order"
+          TopLeft="87,33" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\sat_order\dst_sat_order"
+          TopLeft="86,160" />
+        <EdgeLayout
+          Id="Package\sat_order.Paths[ADO NET 源输出]"
+          TopLeft="154,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,85"
+              Start="0,0"
+              End="11,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.5"
+                    Point2="0,42.5"
+                    Point3="4,42.5" />
+                  <mssgle:LineSegment
+                    End="7,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,42.5"
+                    Point2="11,42.5"
+                    Point3="11,46.5" />
+                  <mssgle:LineSegment
+                    End="11,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\hub_order\hub_order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\hub_order\dst_hub_order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\sat_order\sat_order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\sat_order\dst_sat_order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
