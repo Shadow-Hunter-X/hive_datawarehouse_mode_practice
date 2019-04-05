@@ -12,3 +12,4 @@ NorthWind数据表关系图
 
  Northwind-DV 为转载数据的 SSIS工程文件夹
 
+![SSIS project](asset/ssis_pro.png)
